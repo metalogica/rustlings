@@ -2,8 +2,6 @@
 // Structs contain more than simply some data, they can also have logic, in this
 // exercise we have defined the Package struct and we want to test some logic attached to it,
 // make the code compile and the tests pass! If you have issues execute `rustlings hint structs3`
-
-// I AM NOT DONE
 use std::panic;
 
 #[derive(Debug)]

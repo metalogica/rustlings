@@ -2,8 +2,6 @@
 // Address all the TODOs to make the tests pass!
 // The book: https://doc.rust-lang.org/stable/book/ch10-03-lifetime-syntax.html
 
-// I AM NOT DONE
-
 struct ColorClassicStruct {
   name: String,
   hex: String
