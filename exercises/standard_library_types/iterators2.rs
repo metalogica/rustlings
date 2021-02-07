@@ -1,6 +1,6 @@
 // iterators2.rs
 // In this module, you'll learn some of the unique advantages that iterators can offer.
-// Step 1. Complete the `capitalize_first` function to pass the first two cases.
+// Step 1. Complete the `capitalize_first` function to pass the first two cases. DONE.
 // Step 2. Apply the `capitalize_first` function to a vector of strings.
 //         Ensure that it returns a vector of strings as well.
 // Step 3. Apply the `capitalize_first` function again to a list.
@@ -13,7 +13,7 @@ pub fn capitalize_first(input: &str) -> String {
     let mut c = input.chars();
     match c.next() {
         None => String::new(),
-        Some(first) => first.collect::<String>() + c.as_str(),
+        Some(first) => first.to_uppercase().collect::<String>() + c.as_str(), // ::<T> turbofish
     }
 }
 
@@ -37,14 +37,14 @@ mod tests {
     #[test]
     fn test_iterate_string_vec() {
         let words = vec!["hello", "world"];
-        let capitalized_words: Vec<String> = // TODO
+        let capitalized_words: Vec<String> = words.iter().map(|word| capitalize_first(word)).collect();
         assert_eq!(capitalized_words, ["Hello", "World"]);
     }
 
     #[test]
     fn test_iterate_into_string() {
         let words = vec!["hello", " ", "world"];
-        let capitalized_words = // TODO
+        let capitalized_words = words.iter().map(|word| capitalize_first(word)).collect::<String>();
         assert_eq!(capitalized_words, "Hello World");
     }
 }
