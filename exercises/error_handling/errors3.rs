@@ -6,9 +6,9 @@
 
 
 use std::num::ParseIntError;
-use std::error::Error;
+//use std::error::Error;
 
-// fn main() -> Result<(), Box<dyn Error>> 
+// fn main() -> Result<(), Box<dyn Error>> // this will return a generic error
 fn main() -> Result<(), ParseIntError> {
   let mut tokens = 100;
   let pretend_user_input = "8";
