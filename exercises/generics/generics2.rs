@@ -1,8 +1,6 @@
 // This powerful wrapper provides the ability to store a positive integer value.
 // Rewrite it using generics so that it supports wrapping ANY type.
 
-// I AM NOT DONE
-
 struct Wrapper<T> {
     value: T,
 }
@@ -27,3 +25,4 @@ mod tests {
         assert_eq!(Wrapper::new("Foo").value, "Foo");
     }
 }
+ 
