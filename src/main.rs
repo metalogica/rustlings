@@ -142,7 +142,7 @@ fn main() {
             let fname = format!("{}", e.path.display());
             let filter_cond = filters
                 .split(',')
-                .filter(|f| f.trim().len() > 0)
+                .filter(|f| !f.trim().is_empty())
                 .any(|f| e.name.contains(&f) || fname.contains(&f));
             let status = if e.looks_done() { "Done" } else { "Pending" };
             let solve_cond = {
@@ -213,7 +213,7 @@ fn main() {
     if matches.subcommand_matches("watch").is_some() {
         if let Err(e) = watch(&exercises, verbose) {
             println!(
-                "Error: Could not watch your progess. Error message was {:?}.",
+                "Error: Could not watch your progress. Error message was {:?}.",
                 e
             );
             println!("Most likely you've run out of disk space or your 'inotify limit' has been reached.");
