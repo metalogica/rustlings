@@ -15,7 +15,7 @@ trait AppendBar {
 impl AppendBar for String {
     //Add your code here
     fn append_bar(self) -> String {
-      self + String::from("Bar")
+      self + "Bar"
     }
 }
 
