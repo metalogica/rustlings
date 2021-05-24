@@ -8,7 +8,6 @@
 // Have fun :-)
 
 // hint: https://doc.rust-lang.org/std/iter/trait.Iterator.html
-// I AM NOT DONE
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum DivisionError {
@@ -26,6 +25,9 @@ pub struct NotDivisibleError {
 // evenly divisible by b.
 // Otherwise, it should return a suitable error.
 pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
+  if b == 0 {
+    return Err(DivisionError::DivideByZero)
+  }
   // check to see if a % b == 0
   let even = a % b == 0;
   // if so, then return it
