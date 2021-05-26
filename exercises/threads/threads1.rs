@@ -18,7 +18,7 @@ struct JobStatus {
 
 fn main() {
     let status = Arc::new(JobStatus { jobs_completed: 0 });
-    let status_shared = status.clone();
+    let mut status_shared = status.clone();
     thread::spawn(move || {
         for _ in 0..10 {
             thread::sleep(Duration::from_millis(250));
