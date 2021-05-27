@@ -8,7 +8,7 @@
 
 // I AM NOT DONE
 
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
 
@@ -17,16 +17,21 @@ struct JobStatus {
 }
 
 fn main() {
-    let status = Arc::new(JobStatus { jobs_completed: 0 });
-    let mut status_shared = status.clone();
+    let new_job = JobStatus { jobs_completed: 0 };
+    let status = Arc::new(Mutex::new(new_job));
+    let status_shared = Arc::clone(&status);
+    // spawn a new thread that will run a for-loop code block 10 times
     thread::spawn(move || {
+        // in this code block, the new thread will sleep 250ms, and then increment the counter in JobStatus
         for _ in 0..10 {
             thread::sleep(Duration::from_millis(250));
-            status_shared.jobs_completed += 1;
+            status_shared.lock().unwrap().jobs_completed += 1;
         }
     });
-    while status.jobs_completed < 10 {
-        println!("waiting... ");
+    // whilst the spawned thread has begun running, we will peek into the JobStatus on 500ms intervals to check the counter
+    // if the counter has reached 10, we stop running the code block below.
+    while status.lock().unwrap().jobs_completed < 10 {
+        println!("waiting... Current Count: {:#?}", status.lock().unwrap().jobs_completed);
         thread::sleep(Duration::from_millis(500));
     }
 }
