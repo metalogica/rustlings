@@ -4,14 +4,23 @@
 
 // I AM NOT DONE
 
+#[macro_use]
 mod macros {
     macro_rules! my_macro {
         () => {
             println!("Check out my macro!");
         };
     }
+
+    macro_rules! another_macro {
+      () => {
+        let ten: usize = 10;
+        println!("The number is: {}", ten)
+      }
+    }
 }
 
 fn main() {
     my_macro!();
+    another_macro!();
 }
