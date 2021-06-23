@@ -11,7 +11,12 @@
 fn main() {
     let x = 1.2331f64;
     let y = 1.2332f64;
-    if y != x {
+
+    let error_margin = f64::EPSILON;
+    println!("Error: {}", error_margin);
+
+    // check to see if these two floating point numbers are 'roughly equal'
+    if (y - x).abs() < error_margin {
         println!("Success!");
     }
 }
