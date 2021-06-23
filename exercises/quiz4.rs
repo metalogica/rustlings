@@ -4,8 +4,14 @@
 // - Macros
 
 // Write a macro that passes the quiz! No hints this time, you can do it!
-
-// I AM NOT DONE
+macro_rules! my_macro {
+  ($word:tt) => { 
+    [
+      String::from("Hello"), 
+      String::from($word)
+    ].join(" ") 
+  };
+}
 
 #[cfg(test)]
 mod tests {
